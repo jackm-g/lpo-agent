@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lpo-agent"
+version = "0.2.0"
+description = "Linear Programming Optimization (LPO) Agent — NL decision questions to solved linear programs."
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.7,<3",
+    "pulp>=3.0",
+    "highspy>=1.7",
+    "requests>=2.31",
+    "httpx>=0.27",
+    "python-dotenv>=1.0",
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+lpo = "lpo.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["lpo*"]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    # PuLP 3.x emits forward-compat deprecation warnings for its own dict/ctor
+    # APIs; silence them so test output is readable.
+    "ignore::DeprecationWarning:pulp.*",
+    "ignore::DeprecationWarning:starlette.*",
+]

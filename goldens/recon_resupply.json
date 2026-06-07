@@ -1,0 +1,28 @@
+{
+  "name": "recon_resupply",
+  "description": "Section 5.1 worked instance — MILP with binding fuel/aircrew constraints.",
+  "question": "We have 4 ISR airframe-days; each recon sortie uses one. Resupply burns 2 fuel pallets each and we have 12. Aircrew duty hours total 18; recon needs 3 hours, resupply 2. Each recon sortie is worth 3, each resupply 5. How many of each should we fly to maximize value?",
+  "expected_ir": {
+    "status": "formulated",
+    "sense": "maximize",
+    "variables": [
+      {"name": "x1", "meaning": "recon sorties", "lower": 0, "upper": null, "integer": true},
+      {"name": "x2", "meaning": "resupply sorties", "lower": 0, "upper": null, "integer": true}
+    ],
+    "objective": [{"var": "x1", "coef": 3}, {"var": "x2", "coef": 5}],
+    "constraints": [
+      {"name": "airframes", "terms": [{"var": "x1", "coef": 1}], "op": "<=", "rhs": 4,
+       "source": "4 ISR airframe-days; recon uses one each"},
+      {"name": "fuel", "terms": [{"var": "x2", "coef": 2}], "op": "<=", "rhs": 12,
+       "source": "resupply burns 2 fuel pallets each, 12 available"},
+      {"name": "aircrew", "terms": [{"var": "x1", "coef": 3}, {"var": "x2", "coef": 2}], "op": "<=", "rhs": 18,
+       "source": "duty hours: recon 3, resupply 2, 18 total"}
+    ]
+  },
+  "expected_solution": {
+    "objective_value": 36.0,
+    "variables": {"x1": 2, "x2": 6},
+    "binding": ["fuel", "aircrew"],
+    "shadow_prices": {"fuel": 1.5, "aircrew": 1.0, "airframes": 0.0}
+  }
+}
