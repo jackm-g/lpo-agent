@@ -10,3 +10,6 @@ uvicorn[standard]>=0.29
 
 # Dev / test
 pytest>=8.0
+
+# Docs — regenerating the worked-example figures (docs/generate_figures.py)
+matplotlib>=3.7

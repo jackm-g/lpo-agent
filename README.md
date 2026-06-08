@@ -35,6 +35,15 @@ Question + context
 | `lpo/cli.py` | Command-line entry point |
 | `lpo/eval.py` | IR equivalence + solution re-substitution checks (§11) |
 
+## Worked example
+
+[**docs/bradley-motor-pool-example.md**](docs/bradley-motor-pool-example.md) is a
+full end-to-end run against the live Fireworks backend: a slang-heavy Army
+motor-pool prompt → formal LP → graphical solution, with binding-constraint and
+shadow-price visualizations.
+
+![Graphical LP solution](docs/assets/graphical_solution.png)
+
 ## Install
 
 ```bash

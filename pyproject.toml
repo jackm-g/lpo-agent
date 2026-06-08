@@ -20,6 +20,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
+docs = ["matplotlib>=3.7"]
 
 [project.scripts]
 lpo = "lpo.cli:main"
