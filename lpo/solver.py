@@ -159,7 +159,10 @@ def _constraint_result(
         slack = abs(lhs - c.rhs)
     binding = abs(slack) <= BINDING_TOL or c.op == "=="
 
-    sp = None if shadow_price is None else round(float(shadow_price), 9)
+    # Shadow prices come from a finite-difference quotient (delta = 1e-4), so the
+    # last few digits are numerical noise; round to 6 decimals for a clean,
+    # honest read (e.g. 0.749999999 -> 0.75).
+    sp = None if shadow_price is None else round(float(shadow_price), 6)
     return ConstraintResult(
         name=c.name,
         lhs_value=round(lhs, 9),
