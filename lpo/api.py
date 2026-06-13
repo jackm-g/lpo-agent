@@ -13,15 +13,33 @@ deployment with sticky sessions or an external store.
 
 from __future__ import annotations
 
+import os
 from typing import Optional, Union
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from .models import InfoResponse, SolveRequest, SuccessResponse
 from .orchestrator import Orchestrator, Session
 
 app = FastAPI(title="LPO Agent", version="0.2.0")
+
+# Allow the browser frontend to call the API. Defaults cover the Vite dev server;
+# override with LPO_CORS_ORIGINS (comma-separated) or "*" for any origin.
+_origins_env = os.environ.get(
+    "LPO_CORS_ORIGINS",
+    "http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173",
+)
+_allow_origins = ["*"] if _origins_env.strip() == "*" else [
+    o.strip() for o in _origins_env.split(",") if o.strip()
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=_allow_origins,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 _orchestrator = Orchestrator()
 _sessions: dict[str, Session] = {}

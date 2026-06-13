@@ -35,6 +35,18 @@ Question + context
 | `lpo/cli.py` | Command-line entry point |
 | `lpo/eval.py` | IR equivalence + solution re-substitution checks (§11) |
 
+## Frontend
+
+A mobile-friendly React + TypeScript UI lives in [`frontend/`](frontend/). It
+shows **how your prompt maps to the LP elements** (objective, variables, and
+each constraint traced back to your words), then renders the solved **LP graph**
+and the answer. It runs out-of-the-box in Demo mode (no backend needed) and can
+switch to the live API.
+
+```bash
+cd frontend && npm install && npm run dev   # http://localhost:5173
+```
+
 ## Worked example
 
 [**docs/bradley-motor-pool-example.md**](docs/bradley-motor-pool-example.md) is a
