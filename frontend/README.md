@@ -54,6 +54,20 @@ npm run preview      # serve the production build
 For a static deploy hitting a hosted backend, set `VITE_API_BASE` (e.g.
 `https://lpo.example.com`) at build time so the app calls that origin directly.
 
+## Regenerating the README screenshots
+
+The three guide screenshots in the root README are produced by Playwright in
+Demo mode:
+
+```bash
+npm run build
+npm run preview &                 # serves dist/ on :4173
+npm run screenshots               # -> ../docs/screenshots/*.png
+```
+
+(Playwright needs a Chromium with its system libraries; `npx playwright install
+--with-deps chromium` on a machine where you can install packages.)
+
 ## Structure
 
 | File | Role |

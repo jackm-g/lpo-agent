@@ -9,6 +9,19 @@ The agent does **two** language jobs — **formulate** (English → formal model
 in between. The model never does arithmetic, which makes numeric hallucination in
 the output structurally impossible (Section 7.4 of [`SPEC.md`](SPEC.md)).
 
+## A guided tour (the mobile UI)
+
+The [`frontend/`](frontend/) walks you through a decision problem in three screens.
+The example below is a 2-variable motor-pool problem typed in plain Army shorthand.
+
+| 1 · Describe | 2 · Review elements | 3 · Solution |
+|:---:|:---:|:---:|
+| ![Describe screen](docs/screenshots/1-describe.png) | ![Review LP elements screen](docs/screenshots/2-review-elements.png) | ![Solution screen with LP graph](docs/screenshots/3-solution.png) |
+| Type the question in plain language (or **Load example**), then **Formulate**. | See exactly how your wording became the **objective, variables, and constraints** — each constraint traced back to the words in your prompt. Tweak and re-formulate to watch the elements change. | Approve, and it solves: the **LP graph** (feasible region, constraint lines, optimum ●), the decision, binding constraints, shadow prices, and a grounded explanation. |
+
+Run it locally with `cd frontend && npm install && npm run dev` (starts in Demo
+mode — no backend or API key needed). See [`frontend/README.md`](frontend/README.md).
+
 ```
 Question + context
    │
@@ -34,18 +47,6 @@ Question + context
 | `lpo/api.py` | FastAPI REST service, two-call confirmation (§5.3) |
 | `lpo/cli.py` | Command-line entry point |
 | `lpo/eval.py` | IR equivalence + solution re-substitution checks (§11) |
-
-## Frontend
-
-A mobile-friendly React + TypeScript UI lives in [`frontend/`](frontend/). It
-shows **how your prompt maps to the LP elements** (objective, variables, and
-each constraint traced back to your words), then renders the solved **LP graph**
-and the answer. It runs out-of-the-box in Demo mode (no backend needed) and can
-switch to the live API.
-
-```bash
-cd frontend && npm install && npm run dev   # http://localhost:5173
-```
 
 ## Worked example
 
