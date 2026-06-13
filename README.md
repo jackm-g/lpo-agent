@@ -17,7 +17,7 @@ The example below is a 2-variable motor-pool problem typed in plain Army shortha
 | 1 · Describe | 2 · Review elements | 3 · Solution |
 |:---:|:---:|:---:|
 | ![Describe screen](docs/screenshots/1-describe.png) | ![Review LP elements screen](docs/screenshots/2-review-elements.png) | ![Solution screen with LP graph](docs/screenshots/3-solution.png) |
-| Type the question in plain language (or **Load example**), then **Formulate**. | See exactly how your wording became the **objective, variables, and constraints** — each constraint traced back to the words in your prompt. Tweak and re-formulate to watch the elements change. | Approve, and it solves: the **LP graph** (feasible region, constraint lines, optimum ●), the decision, binding constraints, shadow prices, and a grounded explanation. |
+| Type the question in plain language (or **Load example**), then **Formulate**. | See exactly how your wording became the **objective, variables, and constraints** — each constraint traced back to the words in your prompt. Tweak and re-formulate to watch the elements change. | Approve, and it solves: the **LP graph**, then a **decision risk profile** — the pros & cons of the recommended plan (strengths/buffers vs. quantified risk exposure), where more capacity pays off, plus shadow prices and a grounded explanation. |
 
 Run it locally with `cd frontend && npm install && npm run dev` (starts in Demo
 mode — no backend or API key needed). See [`frontend/README.md`](frontend/README.md).

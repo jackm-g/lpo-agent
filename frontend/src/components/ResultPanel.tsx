@@ -1,4 +1,5 @@
 import type { LpIr, SolverResult } from "../types";
+import DecisionProfile from "./DecisionProfile";
 
 interface Props {
   ir: LpIr;
@@ -30,6 +31,13 @@ export default function ResultPanel({ ir, result, explanation }: Props) {
           ))}
         </ul>
       </div>
+
+      <section className="ir-block">
+        <h3>
+          <span className="ir-kicker">Decision risk profile</span> the pros &amp; cons
+        </h3>
+        <DecisionProfile ir={ir} result={result} />
+      </section>
 
       <section className="ir-block">
         <h3>

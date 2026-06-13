@@ -76,9 +76,11 @@ npm run screenshots               # -> ../docs/screenshots/*.png
 | `src/api.ts` | `solve`/`confirm` clients + a faithful in-browser demo API |
 | `src/demoData.ts` | the real Bradley run, for Demo mode |
 | `src/lpGeometry.ts` | feasible-region polygon via half-plane clipping |
+| `src/riskProfile.ts` | derives the decision pros/cons + risk exposure from the SolverResult |
 | `src/components/IrBreakdown.tsx` | prompt → LP elements, with provenance |
 | `src/components/LpGraph.tsx` | the SVG feasible-region plot |
-| `src/components/ResultPanel.tsx` | answer, bottlenecks, shadow prices, explanation |
+| `src/components/DecisionProfile.tsx` | strengths/risks/levers panel for decision-makers |
+| `src/components/ResultPanel.tsx` | answer, risk profile, bottlenecks, shadow prices, explanation |
 | `src/App.tsx` | the Describe → Review → Solution state machine |
 
 Models with more than two variables are solved exactly but can't be drawn as a

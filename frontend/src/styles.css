@@ -549,6 +549,207 @@ code {
   color: #fff;
 }
 
+/* ---- Decision risk profile (pros & cons) ---- */
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.risk-summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border-left: 4px solid var(--muted);
+  background: #f3f6f9;
+}
+.risk-summary.level-low {
+  border-color: var(--green);
+  background: #eaf7f0;
+}
+.risk-summary.level-moderate {
+  border-color: var(--orange);
+  background: #fff6e6;
+}
+.risk-summary.level-elevated {
+  border-color: var(--red);
+  background: #fdecea;
+}
+.risk-chip {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 9px;
+  border-radius: 999px;
+  color: #fff;
+  white-space: nowrap;
+}
+.level-low .risk-chip {
+  background: var(--green);
+}
+.level-moderate .risk-chip {
+  background: var(--orange);
+}
+.level-elevated .risk-chip {
+  background: var(--red);
+}
+.risk-headline {
+  font-size: 0.88rem;
+  flex: 1;
+  min-width: 180px;
+}
+
+.profile-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.profile-col {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+}
+.profile-col.pros {
+  background: #f5fbf8;
+  border-color: #cdeadd;
+}
+.profile-col.cons {
+  background: #fdf6f5;
+  border-color: #f3d6d2;
+}
+.profile-col h4 {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.profile-sub {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.profile-icon {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #fff;
+  flex: none;
+}
+.pros .profile-icon {
+  background: var(--green);
+}
+.cons .profile-icon {
+  background: var(--red);
+}
+.profile-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.profile-row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.profile-row-head strong {
+  font-size: 0.86rem;
+}
+.profile-mag {
+  font-size: 0.74rem;
+  font-weight: 800;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.profile-mag.pros {
+  color: var(--green);
+}
+.profile-mag.cons {
+  color: var(--red);
+}
+.profile-detail {
+  margin: 3px 0 0;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+.profile-prov {
+  margin: 4px 0 0;
+  font-size: 0.74rem;
+  font-style: italic;
+  color: var(--muted);
+}
+.profile-empty {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.knife-edge {
+  margin: 10px 0 0;
+  font-size: 0.78rem;
+  color: var(--red);
+  font-weight: 600;
+}
+
+.levers {
+  border: 1px dashed #cdd8e3;
+  border-radius: 10px;
+  padding: 12px;
+  background: #f7faff;
+}
+.levers h4 {
+  margin: 0 0 8px;
+  font-size: 0.86rem;
+  color: var(--blue);
+}
+.lever-icon {
+  color: var(--blue);
+}
+.levers ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.levers li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.lever-mag {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--blue);
+  white-space: nowrap;
+  min-width: 72px;
+  font-variant-numeric: tabular-nums;
+}
+.lever-body {
+  font-size: 0.82rem;
+}
+.profile-caveats {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.76rem;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .sp-table {
   width: 100%;
   border-collapse: collapse;
@@ -614,5 +815,8 @@ code {
   }
   .row button.primary {
     flex: 1;
+  }
+  .profile-cols {
+    grid-template-columns: 1fr;
   }
 }
